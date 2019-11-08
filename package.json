@@ -1,0 +1,35 @@
+{
+  "name": "cuckoo-function",
+  "version": "1.0.1",
+  "description": "常用函数库",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddcome/cuckoo-function.git"
+  },
+  "keywords": [
+    "函数库"
+  ],
+  "author": "ddcome",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddcome/cuckoo-function/issues"
+  },
+  "homepage": "https://github.com/ddcome/cuckoo-function#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0"
+  }
+}
