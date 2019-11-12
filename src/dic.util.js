@@ -66,13 +66,3 @@ export function codeToName (data, dic, config) {
 	}
 }
 
-/**
- *
- * @param {JSON} tree 输入的字典数据，json数据
- * @param {Array} keys ['一级'， '二级']
- * @returns {string}
- */
-export function findDeepInTree(tree, keys) {
-	let res = '';
-	return res;
-}

@@ -70,36 +70,36 @@ export function getPreThreeMouth (currentDate) {
 
 /**
  * 格式化时间
- * @param {string} style 'yyyy-MM-dd hh:mm:ss'
- * @returns {string}
+ * @param fmt {string} "YYYY-mm-dd HH:MM" 可缺省部分
+ * @param date {date} 时间
+ * @returns {*}
  */
-export function formatDate (style) {
-	if (!style || !(style = style.toString().trim())) style = 'yyyy-MM-dd hh:mm:ss';
-	let o = {
-		'M+': this.getMonth() + 1, //month
-		'd+': this.getDate(),      //day
-		'h+': this.getHours(),     //hour
-		'm+': this.getMinutes(),   //minute
-		's+': this.getSeconds(),   //second
-		'q+': Math.floor((this.getMonth() + 3) / 3), //quarter
-		'S': this.getMilliseconds() //millisecond
+export function dateFormat(fmt, date) {
+	let ret;
+	let opt = {
+		"Y+": date.getFullYear().toString(),        // 年
+		"m+": (date.getMonth() + 1).toString(),     // 月
+		"d+": date.getDate().toString(),            // 日
+		"H+": date.getHours().toString(),           // 时
+		"M+": date.getMinutes().toString(),         // 分
+		"S+": date.getSeconds().toString()          // 秒
+		// 有其他格式化字符需求可以继续添加，必须转化成字符串
 	};
-	if (/(y+)/.test(style))
-		style = style.replace(RegExp.$1, this.getFullYear().toString().substr(4 - RegExp.$1.length));
-	for (let k in o)
-		if (new RegExp('(' + k + ')').test(style))
-			style = style.replace(RegExp.$1, RegExp.$1.length == 1
-				? o[k]
-				: ('00' + o[k]).substr(o[k].toString().length));
-	return style;
+	for (let k in opt) {
+		ret = new RegExp("(" + k + ")").exec(fmt);
+		if (ret) {
+			fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+		};
+	};
+	return fmt;
 }
 
 
 /**
  * 判断是否是闰年
- * @param year 当前年份
+ * @param year {number} 当前年份
  * */
-export function isRunNian(year) {
+export function isLeapYear(year) {
 	if ((!(year % 4) && year % 100) || !(year % 400)) return true;
 	return false;
 }
@@ -111,6 +111,6 @@ export function isRunNian(year) {
  * */
 export function getDaysForMonth(year, month) {
 	let datesDate = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	if (month === 2 && isRunnian(year)) return 29;
+	if (month === 2 && isLeapYear(year)) return 29;
 	return datesDate[month];
 }
