@@ -175,7 +175,12 @@ console.log(CuckooFunction.add(1,2), 'Biu');
 
 ```
 
-## 
+## 函数说明
+
+
+
+## 日志
+
 
 
 
