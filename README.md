@@ -43,10 +43,16 @@ getExplore | 获取浏览器版本信息 | CuckooFunction.getExplore()
 
 函数名称 | 函数描述 | 函数如何调用
 ---|---|---
+getPreDay | 获取昨天 | CuckooFunction.getPreDay('2019-11-11')
+getNextDay | 获取明天 | CuckooFunction.getNextDay('2019-11-11')
 getPreWeek | 获取前一个周 | CuckooFunction.getPreWeek('2019-11-11')或CuckooFunction.getPreWeek('2019.11.11')下同
-getPreOneMouth | 获取前一个月 | CuckooFunction.getPreOneMouth('2019-11-11')
+getPreMouth | 获取前一个月 | CuckooFunction.getPreMouth('2019-11-11')
 getPreYear | 获取前一年 | CuckooFunction.getPreYear('2019-11-11')
 getPreThreeMouth | 获取前一个季度 | CuckooFunction.getPreThreeMouth('2019-11-11')
+getNextWeek | 获取下一周 | CuckooFunction.getNextWeek('2019-11-11')
+getNextMouth | 获取下一个月 | CuckooFunction.getNextMouth('2019-11-11')
+getNextYear | 获取下一个年 | CuckooFunction.getNextYear('2019-11-11')
+getDateDistance | 获取时间段数组 | CuckooFunction.getDateDistance('2019-11-11')
 formatDate | 格式化时间 | CuckooFunction.dateFormat('YYYY-mm-dd', new Date()) 或 CuckooFunction.dateFormat('YYYY', new Date())
 isLeapYear | 是否是闰年 | CuckooFunction.isLeapYear(2019)
 getDaysForMonth | 获取指定月份的天数 | CuckooFunction.getDaysForMonth(2019, 12)

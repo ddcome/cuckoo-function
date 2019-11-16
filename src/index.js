@@ -15,13 +15,19 @@ import {
 import {unique} from "./array.util";
 import {getExplore} from "./browser.util";
 import {
+	getPreDay,
+	getNextDay,
 	getPreWeek,
-	getPreOneMouth,
+	getNextWeek,
+	getPreMouth,
+	getNextMouth,
 	getPreYear,
+	getNextYear,
 	getPreThreeMouth,
 	dateFormat,
 	isLeapYear,
-	getDaysForMonth
+	getDaysForMonth,
+	getDateDistance
 } from "./date.util";
 
 export default {
@@ -33,13 +39,19 @@ export default {
 	multiplication,
 	subtraction,
 	// 日期类
+	getPreDay,
+	getNextDay,
 	getPreWeek,
-	getPreOneMouth,
+	getNextWeek,
+	getPreMouth,
+	getNextMouth,
 	getPreYear,
+	getNextYear,
 	getPreThreeMouth,
 	dateFormat,
 	isLeapYear,
 	getDaysForMonth,
+	getDateDistance,
 	// 浏览器类
 	getExplore,
 	// 字符串类
