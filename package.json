@@ -1,6 +1,6 @@
 {
   "name": "cuckoo-function",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "description": "常用函数库",
   "main": "dist/index.js",
   "scripts": {

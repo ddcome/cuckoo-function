@@ -62,11 +62,9 @@ export function getNextMouth (currentDate) {
 	let year = arr[0]; //获取当前日期的年份
 	let month = arr[1]; //获取当前日期的月份
 	let day = arr[2]; //获取当前日期的日
-	let days = new Date(year, month, 0);
-	days = days.getDate(); //获取当前日期中的月的天数
 	let year2 = year;
 	let month2 = parseInt(month) + 1;
-	if (month2 == 13) {
+	if (month2 === 13) {
 		year2 = parseInt(year2) + 1;
 		month2 = 1;
 	}
@@ -80,7 +78,7 @@ export function getNextMouth (currentDate) {
 		month2 = '0' + month2;
 	}
 
-	let t2 = year2 + '-' + month2 + (day2 ? '\'-\' + day2' : '');
+	let t2 = year2 + '-' + month2 + (day2 ? "'-' + day2" : '');
 	return t2;
 }
 
@@ -141,7 +139,10 @@ export function getPreThreeMouth (currentDate) {
  */
 export function getPreDay (currentDate) {
 	let curDate = new Date(currentDate);
-	return dateFormat('YYYY-mm-dd', new Date(curDate.getTime() - 24 * 60 * 60 * 1000));
+	return dateFormat(
+		'YYYY-mm-dd',
+		new Date(curDate.getTime() - 24 * 60 * 60 * 1000)
+	);
 }
 
 /**
@@ -151,7 +152,10 @@ export function getPreDay (currentDate) {
  */
 export function getNextDay (currentDate) {
 	let curDate = new Date(currentDate);
-	return dateFormat('YYYY-mm-dd', new Date(curDate.getTime() + 24 * 60 * 60 * 1000));
+	return dateFormat(
+		'YYYY-mm-dd',
+		new Date(curDate.getTime() + 24 * 60 * 60 * 1000)
+	);
 }
 
 /**
@@ -163,23 +167,25 @@ export function getNextDay (currentDate) {
 export function dateFormat (fmt, date) {
 	let ret;
 	let opt = {
-		"Y+": date.getFullYear().toString(),        // 年
-		"m+": (date.getMonth() + 1).toString(),     // 月
-		"d+": date.getDate().toString(),            // 日
-		"H+": date.getHours().toString(),           // 时
-		"M+": date.getMinutes().toString(),         // 分
-		"S+": date.getSeconds().toString()          // 秒
+		'Y+': date.getFullYear().toString(), // 年
+		'm+': (date.getMonth() + 1).toString(), // 月
+		'd+': date.getDate().toString(), // 日
+		'H+': date.getHours().toString(), // 时
+		'M+': date.getMinutes().toString(), // 分
+		'S+': date.getSeconds().toString() // 秒
 		// 有其他格式化字符需求可以继续添加，必须转化成字符串
 	};
 	for (let k in opt) {
-		ret = new RegExp("(" + k + ")").exec(fmt);
+		ret = new RegExp('(' + k + ')').exec(fmt);
 		if (ret) {
-			fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+			fmt = fmt.replace(
+				ret[1],
+				ret[1].length === 1 ? opt[k] : opt[k].padStart(ret[1].length, '0')
+			);
 		}
 	}
 	return fmt;
 }
-
 
 /**
  * 判断是否是闰年
