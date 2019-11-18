@@ -1,7 +1,21 @@
-import {plus, division, multiplication, subtraction} from './arithmetic.util';
-import {guid, trimLeft, trim, trimRight} from './string.util';
-import {codeToName} from './dic.util';
-import {numberToChinese} from './money.util';
+import {
+	plus,
+	division,
+	multiplication,
+	subtraction
+} from './arithmetic.util';
+import {
+	guid,
+	trimLeft,
+	trim,
+	trimRight
+} from './string.util';
+import {
+	codeToName
+} from './dic.util';
+import {
+	numberToChinese
+} from './money.util';
 import {
 	checkPhone,
 	checkTelephone,
@@ -10,10 +24,28 @@ import {
 	checkIdCard,
 	isObj,
 	isArray,
-	isEmpty
+	isEmpty,
+	checkNumber,
+	checkDecimal,
+	checkInteger,
+	checkNoCnString,
+	checkChinese,
+	checkQQ,
+	checkIP,
+	checkURL,
+	checkQuote,
+	checkDate,
+	checkTime,
+	checkFullTime,
+	checkSexByIdCard,
+	checkEnStrRange
 } from "./verification.util";
-import {unique} from "./array.util";
-import {getExplore} from "./browser.util";
+import {
+	unique
+} from "./array.util";
+import {
+	getExplore
+} from "./browser.util";
 import {
 	getPreDay,
 	getNextDay,
@@ -71,5 +103,19 @@ export default {
 	checkIdCard,
 	isObj,
 	isArray,
-	isEmpty
+	isEmpty,
+	checkNumber,
+	checkDecimal,
+	checkInteger,
+	checkNoCnString,
+	checkChinese,
+	checkQQ,
+	checkIP,
+	checkURL,
+	checkQuote,
+	checkDate,
+	checkTime,
+	checkFullTime,
+	checkSexByIdCard,
+	checkEnStrRange
 }

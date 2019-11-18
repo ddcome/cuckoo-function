@@ -81,6 +81,22 @@ checkIdCard | 是否是身份证  |  CuckooFunction.checkIdCard('153434366666666
 isObj | 是否是Object |  CuckooFunction.isObj({})
 isArray | 是否是数组  |  CuckooFunction.isArray([])
 isEmpty | 是否是null或undefined类型 |  CuckooFunction.isEmpty('0')
+isEmpty | 判断空 | CuckooFunction.isEmpty()
+checkNumber | 是否全部是数字 | CuckooFunction.checkNumber()
+checkDecimal | 是否为数字 | CuckooFunction.checkDecimal()
+checkInteger | 是否为整数 | CuckooFunction.checkInteger()
+checkNoCnString | 是否是非汉字字符 | CuckooFunction.checkNoCnString()
+checkChinese | 是否包含汉字 | CuckooFunction.checkChinese()
+checkQQ | 是否是QQ号 | CuckooFunction.checkQQ()
+checkIP | 是否是IP地址 | CuckooFunction.checkIP()
+checkURL | 是否是URL | CuckooFunction.checkURL()
+checkQuote | 是否包含特殊字符 | CuckooFunction.checkQuote()
+checkDate | 检查是否是日期,验证短日期（2019-11-11） | CuckooFunction.checkDate()
+checkTime | 是否是时间,验证时间(10:57:10) | CuckooFunction.checkTime()
+checkFullTime | 是否是时间,验证时间(2019-11-11 10:57:10) | CuckooFunction.checkFullTime()
+checkSexByIdCard | 判断性别 | CuckooFunction.checkSexByIdCard()
+checkEnStrRange | 是否是0-20个字母数字组合 | CuckooFunction.checkEnStrRange()
+
 
 8. 字符串类
 

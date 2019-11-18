@@ -1,4 +1,9 @@
-export function checkPhone(phone){
+/**
+ * 检查是否是手机号
+ * @param phone
+ * @returns {boolean}
+ */
+export function checkPhone (phone) {
 	const reg = /(1[3-9]\d{9}$)/;
 	return reg.test(phone);
 }
@@ -72,6 +77,237 @@ export function isEmpty (value) {
 		return false
 	}
 }
+
+/**
+ * 是否全部是数字
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkNumber (str) {
+	return str.match(/\D/) == null;
+}
+
+/**
+ * 是否为数字，包含小数
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkDecimal (str) {
+	if (str.match(/^-?\d+(\.\d+)?$/g) == null) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+/**
+ * 是否为整数
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkInteger (str) {
+	if (str.match(/^[-+]?\d*$/) == null) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+/**
+ * 是否是非汉字字符
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkNoCnString (str) {
+	if (/[^\x00-\xff]/g.test(str)) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+/**
+ * 是否包含汉字
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkChinese (str) {
+	if (escape(str).indexOf("%u") != -1) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+/**
+ * 是否是QQ号
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkQQ (str) {
+	if (str.match(/^\d{5,10}$/) == null) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+/**
+ * 是否是IP地址
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkIP (str) {
+	let arg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+	if (str.match(arg) == null) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+/**
+ * 是否是URL
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkURL (str) {
+	if (str.match(/(http[s]?|ftp):\/\/[^\/\.]+?\..+\w$/i) == null) {
+		return false
+	}
+	else {
+		return true;
+	}
+}
+
+/**
+ * 是否包含特殊字符
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkQuote (str) {
+	let items = new Array("~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "{", "}", "[", "]", "(", ")");
+	items.push(":", ";", "'", "|", "\\", "<", ">", "?", "/", "<<", ">>", "||", "//");
+	items.push("admin", "administrators", "administrator", "管理员", "系统管理员");
+	items.push("select", "delete", "update", "insert", "create", "drop", "alter", "trancate");
+	str = str.toLowerCase();
+	for (let i = 0; i < items.length; i++) {
+		if (str.indexOf(items[i]) >= 0) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * 检查是否是日期,验证短日期（2019-11-11）
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkDate (str) {
+	let value = str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
+	if (value == null) {
+		return false;
+	}
+	else {
+		let date = new Date(value[1], value[3] - 1, value[4]);
+		return (date.getFullYear() == value[1] && (date.getMonth() + 1) == value[3] && date.getDate() == value[4]);
+	}
+}
+
+/**
+ * 是否是时间,验证时间(10:57:10)
+ * @param str 字符串
+ * @returns {boolean}
+ */
+export function checkTime (str) {
+	let value = str.match(/^(\d{1,2})(:)?(\d{1,2})\2(\d{1,2})$/)
+	if (value == null) {
+		return false;
+	}
+	else {
+		if (value[1] > 24 || value[3] > 60 || value[4] > 60) {
+			return false
+		}
+		else {
+			return true;
+		}
+	}
+}
+
+/**
+ * 是否是时间（完整格式）, (2019-11-11 10:57:10)
+ * @param str
+ * @returns {boolean}
+ */
+export function checkFullTime (str) {
+	let value = str.match(/^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]:[0-5][0-9]$/);
+	if (value == null) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+/**
+ * 判断性别
+ * @param idCard 身份证号
+ * @returns {number} 0[女] | 1[男] | -1[未知，原因是输入了不合法身份证]
+ */
+export function checkSexByIdCard (idCard) {
+	let trim = function (str) {
+		return str.replace(/(^\s*)|(\s*$)/g, "");
+	};
+	idCard = trim(idCard.replace(/ /g, ""));// 对身份证号码做处理。包括字符间有空格。
+	if (idCard.length == 15) {
+		if (idCard.substring(14, 15) % 2 == 0) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	else if (idCard.length == 18) {
+		if (idCard.substring(14, 17) % 2 == 0) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	else {
+		return -1;
+	}
+}
+
+/**
+ * 是否是0-20个字母数字组合
+ * @param str 字符串
+ * @param start 最小个数，默认0，非必填
+ * @param end 最大个数，默认20，非必填
+ * @returns {boolean}
+ */
+export function checkEnStrRange (str, start, end) {
+	let startT = 0; let endT = 20;
+	if (typeof start !== 'undefined' && typeof end !== 'undefined' && Number.isInteger(start) && Number.isInteger(end)) {
+		startT = start;
+		endT = end;
+	}
+	const reg = new RegExp('^[a-z0-9A-Z]{' + startT + ',' + endT + '}$');
+	if (reg.test(str)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 
 /*
 // 港澳回乡证
