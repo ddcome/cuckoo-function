@@ -11,7 +11,8 @@ import {
 	trimRight
 } from './string.util';
 import {
-	codeToName
+	codeToName,
+	DictionaryUtil
 } from './dic.util';
 import {
 	numberToChinese
@@ -93,6 +94,7 @@ export default {
 	trimRight,
 	// 数据字典类
 	codeToName,
+	DictionaryUtil,
 	// 货币类
 	numberToChinese,
 	// 校验类

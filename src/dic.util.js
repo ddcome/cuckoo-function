@@ -67,7 +67,7 @@ export function codeToName (data, dic, config) {
 }
 
 export class DictionaryUtil {
-	dicData = null;
+	dicData = [];
 	dicId = null;
 	config = {
 		label: 'label',
