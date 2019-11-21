@@ -9,7 +9,7 @@
 ## 如何使用cuckoo-function
 
 ```
-npm install cuckoo-funciton
+npm install cuckoo-function
 
 import CuckooFunction  from 'cuckoo-function';
 console.log(CuckooFunction.add(1,2)); 
