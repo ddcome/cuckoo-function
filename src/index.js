@@ -94,7 +94,7 @@ export default {
 	trimRight,
 	// 数据字典类
 	codeToName,
-	DictionaryUtil,
+	DictionaryUtil: DictionaryUtil,
 	// 货币类
 	numberToChinese,
 	// 校验类
