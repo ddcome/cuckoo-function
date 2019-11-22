@@ -112,21 +112,27 @@ export class DictionaryUtil {
 		const $this = this;
 		let res = [];
 		let temp = $this.find(label, value);
+		let conditionHasChildren = (p) => {
+			return (p[$this.config.childrens] && p[$this.config.childrens].length > 0)
+		};
+		let conditionNoChildren = (p) => {
+			return (!p.hasOwnProperty($this.config.childrens) || p[$this.config.childrens] === null || (p[$this.config.childrens] && p[$this.config.childrens].length <= 0))
+		};
 		let findTreeEndDeep = (data) => {
 			if (Array.isArray(data)) {
 				data.forEach((c) => {
-					if (c[$this.config.childrens] && c[$this.config.childrens].length > 0) {
+					if (conditionHasChildren(c)) {
 						findTreeEndDeep(c[$this.config.childrens]);
 					}
-					if (typeof c[$this.config.childrens] === 'undefined' || (Array.isArray(c[$this.config.childrens]) && c[$this.config.childrens].length <= 0)) {
+					if (conditionNoChildren(c)) {
 						res.push(c);
 					}
 				})
 			} else {
-				if (data[$this.config.childrens] && data[$this.config.childrens].length > 0) {
-					findTreeEndDeep(c[$this.config.childrens]);
+				if (conditionHasChildren(data)) {
+					findTreeEndDeep(data[$this.config.childrens]);
 				}
-				if (typeof data[$this.config.childrens] === 'undefined' || (Array.isArray(data[$this.config.childrens]) && data[$this.config.childrens].length <= 0)) {
+				if (conditionNoChildren(data)) {
 					res.push(data);
 				}
 			}
