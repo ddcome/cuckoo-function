@@ -127,7 +127,7 @@ export class DictionaryUtil {
 					findTreeEndDeep(c[$this.config.childrens]);
 				}
 				if (typeof data[$this.config.childrens] === 'undefined' || (Array.isArray(data[$this.config.childrens]) && data[$this.config.childrens].length <= 0)) {
-					res.push(c);
+					res.push(data);
 				}
 			}
 		};
