@@ -103,6 +103,30 @@ export class DictionaryUtil {
 	}
 
 	/**
+	 * 查询末端节点的数据集
+	 * @param label
+	 * @param value
+	 * @returns {Array}
+	 */
+	findTreeEnd (label, value) {
+		const $this = this;
+		let res = [];
+		let temp = $this.find(label, value);
+		let findTreeEndDeep = (data) => {
+			data.forEach((c) => {
+				if (c[$this.config.childrens] && c[$this.config.childrens].length > 0) {
+					findTreeEndDeep(c[$this.config.childrens]);
+				}
+				if (typeof c[$this.config.childrens] === 'undefined' || (Array.isArray(c[$this.config.childrens]) && c[$this.config.childrens].length<=0)) {
+					res.push(c);
+				}
+			})
+		};
+		findTreeEndDeep(temp);
+		return res;
+	}
+
+	/**
 	 * 查询节点信息
 	 * @param label
 	 * @param value [array|object]
