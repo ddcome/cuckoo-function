@@ -103,7 +103,7 @@ export class DictionaryUtil {
 	}
 
 	/**
-	 * 查询末端节点的数据集
+	 * 查询[label, value]下末端节点的数据集
 	 * @param label
 	 * @param value
 	 * @returns {Array}
@@ -113,14 +113,23 @@ export class DictionaryUtil {
 		let res = [];
 		let temp = $this.find(label, value);
 		let findTreeEndDeep = (data) => {
-			data.forEach((c) => {
-				if (c[$this.config.childrens] && c[$this.config.childrens].length > 0) {
+			if (Array.isArray(data)) {
+				data.forEach((c) => {
+					if (c[$this.config.childrens] && c[$this.config.childrens].length > 0) {
+						findTreeEndDeep(c[$this.config.childrens]);
+					}
+					if (typeof c[$this.config.childrens] === 'undefined' || (Array.isArray(c[$this.config.childrens]) && c[$this.config.childrens].length <= 0)) {
+						res.push(c);
+					}
+				})
+			} else {
+				if (data[$this.config.childrens] && data[$this.config.childrens].length > 0) {
 					findTreeEndDeep(c[$this.config.childrens]);
 				}
-				if (typeof c[$this.config.childrens] === 'undefined' || (Array.isArray(c[$this.config.childrens]) && c[$this.config.childrens].length<=0)) {
+				if (typeof data[$this.config.childrens] === 'undefined' || (Array.isArray(data[$this.config.childrens]) && data[$this.config.childrens].length <= 0)) {
 					res.push(c);
 				}
-			})
+			}
 		};
 		findTreeEndDeep(temp);
 		return res;
