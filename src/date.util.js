@@ -94,8 +94,8 @@ export function getPreYear (currentDate) {
 	}
 	let res = new Date();
 	res.setFullYear(currentDateTemp.getFullYear() - 1);
-	res = res.toLocaleDateString().replace(new RegExp('/', 'g'), '-');
-	return res;
+	// res = res.toLocaleDateString().replace(new RegExp('/', 'g'), '-');
+	return dateFormat('YYYY-mm-dd', res);
 }
 
 /**
