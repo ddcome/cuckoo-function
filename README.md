@@ -267,7 +267,7 @@ export default { add }
 // "build": "webpack --config webpack.config.js"
   
 "main": "dist/index.js"
-   
+修改版本号后
 npm run build // 相当于执行 webpck进行打包
 npm publish // 直接发布
 ```
