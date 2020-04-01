@@ -81,6 +81,7 @@ export default {
 	getPreYear,
 	getNextYear,
 	getPreThreeMouth,
+	getPreHalfYear,
 	dateFormat,
 	isLeapYear,
 	getDaysForMonth,
