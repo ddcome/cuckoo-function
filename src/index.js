@@ -56,6 +56,7 @@ import {
 	getNextMouth,
 	getPreYear,
 	getNextYear,
+	getPreHalfYear,
 	getPreThreeMouth,
 	dateFormat,
 	isLeapYear,
