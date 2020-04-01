@@ -82,6 +82,24 @@ export function getNextMouth (currentDate) {
 	return t2;
 }
 
+export function getPreHalfYear(currentDate) {
+	let currentDateTemp = new Date();
+	if (currentDate) {
+		currentDateTemp = new Date(currentDate);
+	}
+	// 先获取当前时间
+	let curDate = currentDateTemp.getTime();
+	// 将半年的时间单位换算成毫秒
+	let halfYear = 365 / 2 * 24 * 3600 * 1000;
+	let pastResult = curDate - halfYear;  // 半年前的时间（毫秒单位）
+	// 日期函数，定义起点为半年前
+	let pastDate = new Date(pastResult),
+		pastYear = pastDate.getFullYear(),
+		pastMonth = pastDate.getMonth() + 1,
+		pastDay = pastDate.getDate();
+	return pastYear + '-' + pastMonth + '-' + pastDay;
+}
+
 /**
  * 获取前一年时间点
  * @param currentDate 字符串时间
